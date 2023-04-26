@@ -83,7 +83,8 @@
         "test:unit:coverage": "sfdx-lwc-jest --coverage",
         "test:unit:debug": "sfdx-lwc-jest --debug",
         "test:unit:watch": "sfdx-lwc-jest --watch",
-        "jsx": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc --vue-lib=c/vueLib",
+        "templates": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc --vue-lib=c/vueLib",
+        "templates:watch": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc --vue-lib=c/vueLib --watch",
         "watch": "webpack serve --mode development"
     }
 }

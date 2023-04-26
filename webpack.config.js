@@ -77,7 +77,7 @@ module.exports = {
                 source: false
             }
         }),
-        new LwcWebpackPlugin()
+        new LwcWebpackPlugin(),
     ],
     devServer: {
         liveReload: true,
