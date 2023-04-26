@@ -1,6 +1,6 @@
 import { LightningElement } from "lwc";
 
-export default class ContainerPreact extends LightningElement {
+export default class ContainerVue extends LightningElement {
     // Class property to hold the instance of the framework
     vueApp;
 
@@ -16,8 +16,6 @@ export default class ContainerPreact extends LightningElement {
         // property on the Vue component, but first we have to get the
         // handle on the first (and only) child element.
         this.vueApp.title = event.target.value;
-
-        // console.log(234, this.vueApp)
     }
 
     handleVueInstance(event) {
