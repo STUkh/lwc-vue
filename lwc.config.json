@@ -5,16 +5,16 @@
             "path": "force-app/main/default/lwc/app/app.js"
         },
         {
-            "name": "c/react",
-            "path": "force-app/main/default/lwc/react/react.js"
+            "name": "c/vueLib",
+            "path": "force-app/main/default/lwc/vueLib/vueLib.js"
         },
         {
             "name": "c/vue",
             "path": "force-app/main/default/lwc/vue/vue.js"
         },
         {
-            "name": "c/vueLibs",
-            "path": "force-app/main/default/lwc/vueLibs/vueLibs.js"
+            "name": "c/vueApp",
+            "path": "force-app/main/default/lwc/vueApp/vueApp.js"
         },
         { "dir": "force-app/main/default/lwc" },
         { "npm": "lightning-base-components" }

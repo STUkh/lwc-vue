@@ -29,6 +29,7 @@
         "css-loader": "^6.7.3",
         "eslint": "^7.20.0",
         "eslint-plugin-inclusive-language": "^2.2.0",
+        "eslint-plugin-vue": "^9.11.0",
         "file-loader": "^6.2.0",
         "html-loader": "^4.2.0",
         "html-webpack-plugin": "^5.5.0",
@@ -82,7 +83,7 @@
         "test:unit:coverage": "sfdx-lwc-jest --coverage",
         "test:unit:debug": "sfdx-lwc-jest --debug",
         "test:unit:watch": "sfdx-lwc-jest --watch",
-        "jsx": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc/vue",
+        "jsx": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc --vue-lib=c/vueLib",
         "watch": "webpack serve --mode development"
     }
 }

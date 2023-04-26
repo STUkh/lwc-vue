@@ -1,24 +1,25 @@
+/* eslint-disable consistent-return */
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 const { transformAsync } = require('@babel/core');
 
-const inputPattern = '**/*.template.jsx';
+const inputPattern = '**/*-template.jsx';
 const excludePattern = '**/node_modules/**';
 
-function replaceVueImport() {
+function replaceVueImport(options) {
   return {
     visitor: {
-      ImportDeclaration(path) {
-        if (path.node.source.value === 'vue') {
-          path.node.source.value = 'c/vueLib';
+      ImportDeclaration(p) {
+        if (p.node.source.value === 'vue') {
+          p.node.source.value = options.vueLib || 'vue';
         }
-      },
-    },
+      }
+    }
   };
 }
 
-function transpileVueJsx(inputFile) {
+function transpileVueJsx(inputFile, options = {}) {
   return new Promise((resolve, reject) => {
     fs.readFile(inputFile, 'utf-8', async (err, source) => {
       if (err) {
@@ -38,13 +39,16 @@ function transpileVueJsx(inputFile) {
               },
             ],
           ],
-          plugins: [replaceVueImport, '@vue/babel-plugin-jsx'],
+          plugins: [
+            replaceVueImport(options),
+            ['@vue/babel-plugin-jsx', { isCustomElement: (tag) => tag.startsWith('c-') }]
+          ],
         });
 
-        const outputFilename = inputFile.replace('.template.jsx', '.template.js');
-        fs.writeFile(outputFilename, result.code, 'utf-8', (err) => {
-          if (err) {
-            reject(err);
+        const outputFilename = inputFile.replace('-template.jsx', '-template.js');
+        fs.writeFile(outputFilename, result.code, 'utf-8', (fileErr) => {
+          if (fileErr) {
+            reject(fileErr);
           } else {
             console.log(`Transpiled: ${inputFile} -> ${outputFilename}`);
             resolve();
@@ -66,6 +70,10 @@ function parseCommandLineArgs() {
     if (key === '--src' && value) {
       options.src = value;
     }
+
+    if (key === '--vue-lib' && value) {
+      options.vueLib = value;
+    }
   });
 
   return options;
@@ -81,7 +89,7 @@ glob(searchPattern, { ignore: excludePattern }, async (err, files) => {
     return;
   }
 
-  const transpilePromises = files.map((file) => transpileVueJsx(file));
+  const transpilePromises = files.map((file) => transpileVueJsx(file, options));
   try {
     await Promise.all(transpilePromises);
     console.log('All files transpiled successfully');
