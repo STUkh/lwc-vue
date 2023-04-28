@@ -56,6 +56,12 @@ Move your LWC example app into the force-app/main/default/lwc directory of your 
 sfdx force:source:push
 ```
 
+or
+
+```
+sfdx project deploy start
+```
+
 Run command above each time you want to deploy your app changes.
 
 Create a Lightning App Page:
@@ -77,6 +83,10 @@ Note: For local development - register new components in `lwc.config.json`
 #### 8.1.Run app locally:
 
 Run `npm run watch` to run project with webpack. Project will be available in `http://localhost:9000`.
+
+Open another terminal window and run `npm run templates` or `npm run templates:watch` to pre-compile Vue JSX templates into render functions.
+
+!!! Note that each template have to ends with "-template.jsx" and "template.js" will be generated as a result.
 
 
 #### 8.2.Run app locally with salesforce:
