@@ -79,6 +79,7 @@ function transformVueFiles(dir, options) {
 
 function watchVueFiles(dir, options) {
     const watcher = chokidar.watch('**/*.vue', {
+      // eslint-disable-next-line no-useless-escape
       ignored: /(^|[\/\\])\../, // Ignore dotfiles
       persistent: true,
       cwd: dir,

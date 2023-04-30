@@ -18,5 +18,6 @@ package.xml
 # LWC Jest
 **/__tests__/**
 
-# Vue JSX templates
+# Vue SFC files and JSX templates
 **/*.jsx
+**/*.vue
