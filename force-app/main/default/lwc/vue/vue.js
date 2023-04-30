@@ -1,6 +1,16 @@
-import { createApp } from 'c/vueLib';
-import rootTemplate from './vue-template.js';
+import { LightningElement, api } from 'lwc';
+import vueApp from './vue-instance.js';
 
-export default createApp({
-    render: rootTemplate
-});
+export default class VueAppComponent extends LightningElement {
+    @api title = '';
+
+    renderedCallback() {
+        const el = this.template.querySelector('.vue-application');
+        vueApp.provide('$lwc', this);
+        vueApp.mount(el);
+    }
+
+    disconnectedCallback() {
+        // vueApp.destroy(); // TODO: clarify how to properly destroy
+    }
+}

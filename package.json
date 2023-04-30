@@ -24,6 +24,7 @@
         "@vue/compiler-sfc": "^3.2.47",
         "babel-jest": "29.5.0",
         "babel-loader": "^9.1.2",
+        "chokidar": "^3.5.3",
         "clean-webpack-plugin": "^4.0.0",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.3",
@@ -40,6 +41,7 @@
         "lint-staged": "^10.5.4",
         "lwc": "^2.42.0",
         "lwc-webpack-plugin": "^3.0.3",
+        "node-sass": "^8.0.0",
         "prettier": "^2.2.1",
         "style-loader": "^3.3.2",
         "vue": "^3.2.47",
@@ -47,7 +49,8 @@
         "webpack": "^5.77.0",
         "webpack-bundle-analyzer": "^4.8.0",
         "webpack-cli": "^5.0.1",
-        "webpack-dev-server": "^4.13.2"
+        "webpack-dev-server": "^4.13.2",
+        "yargs": "^17.7.2"
     },
     "engines": {
         "node": ">=14.0.0",
@@ -76,6 +79,7 @@
         "analyze": "webpack-bundle-analyzer dist/stats.json",
         "build": "webpack build --mode production",
         "build:development": "webpack build --mode development",
+        "jsx:templates": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc --vue-lib=c/vueLib",
         "lint": "eslint ./src/**/*.js",
         "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
         "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
@@ -83,8 +87,8 @@
         "test:unit:coverage": "sfdx-lwc-jest --coverage",
         "test:unit:debug": "sfdx-lwc-jest --debug",
         "test:unit:watch": "sfdx-lwc-jest --watch",
-        "templates": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc --vue-lib=c/vueLib",
-        "templates:watch": "node config/transpile-vue-jsx.js --src=force-app/main/default/lwc --vue-lib=c/vueLib --watch",
+        "templates": "node ./config/vue-sfx-transformer.js --src='./force-app/main/default/lwc' --vue-import-path='c/vueLib'",
+        "templates:watch": "node ./config/vue-sfx-transformer.js --src='./force-app/main/default/lwc' --vue-import-path='c/vueLib' --watch --verbose",
         "watch": "webpack serve --mode development"
     }
 }

@@ -1,0 +1,9 @@
+*** Deploying with SOAP API v57.0 ***
+Deploy ID: 0Af5t00000bBS41CAG
+
+Component Failures [1]
+========================================================================================================================================================================================================================
+| Type  Name      Problem                                                                                                                                                                                                
+| ───── ───────── ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+| Error vueRouter LWC1535: Unexpected plugin compilation error: Plugin - compat, Hook - transform, Cause - /home/sfdc/tools/lwc/242.20.4-2.31.8/vueRouterLib.js: Cannot read properties of null (reading 'declarations') 
+

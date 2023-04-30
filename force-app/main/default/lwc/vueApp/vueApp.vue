@@ -1,11 +1,25 @@
+<template>
+    <div v-for="item in items" :key="item.id">
+        <button class="slds-button slds-button_brand"
+            @click="(event) => triggerEvent(event, 'whatever')"
+        >
+            Hello from <strong>{{name}}</strong> {{item.title}}
+        </button>
+    </div>
+    <div>Title: {{title}}</div>
 
+    <p>
+    <router-link to="/">Go to Home</router-link>
+    <router-link to="/about">Go to About</router-link>
+    </p>
+
+    <router-view></router-view>
+</template>
+
+<script>
 import { ref, reactive, onMounted, inject } from 'c/vueLib';
 
-import { render } from './vueApp-template.js';
-
 export default {
-  render,
-
   setup() {
     const $lwc = inject('$lwc');
     const items = reactive([{id: 'id-1', 'title': 'first'}, {id: 'id-2', 'title': 'second'}]);
@@ -38,3 +52,4 @@ export default {
     };
   },
 };
+</script>

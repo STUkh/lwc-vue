@@ -2,7 +2,7 @@ import { LightningElement } from "lwc";
 
 export default class ContainerVue extends LightningElement {
     // Class property to hold the instance of the framework
-    vueApp;
+    vueAppTitle;
 
     // Class property to hold the event value sent from the 3rd party framework
     eventValue;
@@ -15,14 +15,14 @@ export default class ContainerVue extends LightningElement {
         // This looks a bit hacky, and it is. We can set the reactive
         // property on the Vue component, but first we have to get the
         // handle on the first (and only) child element.
-        this.vueApp.title = event.target.value;
+        this.vueAppTitle.value = event.target.value;
     }
 
     handleVueInstance(event) {
         // This looks a bit hacky, and it is. We can set the reactive
         // property on the Vue component, but first we have to get the
         // handle on the first (and only) child element.
-        this.vueApp = event.detail.instance;
+        this.vueAppTitle = event.detail.title;
     }
 
     // Event handler for receiving the account Id from Preact
