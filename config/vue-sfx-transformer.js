@@ -54,7 +54,9 @@ function processVueFile(filePath, options) {
   if (style.length) {
     fs.writeFileSync(path.join(fileDir, `${fileName}.css`), style, 'utf8');
   } else {
-    fs.unlinkSync(path.join(fileDir, `${fileName}.css`));
+    try {
+      fs.unlinkSync(path.join(fileDir, `${fileName}.css`));
+    } catch (err) {}
   }
 
   if (options.verbose) {
