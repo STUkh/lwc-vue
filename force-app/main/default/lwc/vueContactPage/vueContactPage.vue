@@ -52,17 +52,3 @@
     }
   };
 </script>
-
-<style lang="scss">
-  .contact-form {
-    border: 1px solid #dddbda;
-    border-radius: 4px;
-    padding: 10px;
-
-    &__ {
-      &submit-holder {
-        padding: 20px 0 0;
-      }
-    }
-  }
-</style>

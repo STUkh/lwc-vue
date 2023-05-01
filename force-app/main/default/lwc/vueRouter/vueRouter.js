@@ -1,18 +1,14 @@
 import { createRouter, createWebHashHistory } from './vueRouterLib.js';
 
-import TestComponent from 'c/test';
 import Home from 'c/vueHomePage';
 import About from 'c/vueAboutPage';
 import Contact from 'c/vueContactPage';
-
-console.log(Contact)
 
 // Define Vue routes here
 const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/about', name: 'About', component: About },
     { path: '/contact', name: 'Contact', component: Contact },
-    { path: '/test', name: 'Test', component: TestComponent },
 ]
 
 export const router = createRouter({
