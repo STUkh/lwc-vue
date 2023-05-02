@@ -15,8 +15,7 @@
     <p>
       <router-link to="/">Go to Home</router-link> | 
       <router-link to="/about">Go to About</router-link> | 
-      <router-link to="/contact">Go to Contact</router-link> | 
-      <router-link to="/test">Go to Test</router-link>
+      <router-link to="/contact">Go to Contact</router-link>
     </p>
 
     <router-view></router-view>
@@ -33,7 +32,6 @@ export default {
     const name = ref('Vue!');
 
     function triggerEvent(event, ...args) {
-        console.log(this)
       console.log('Example of template arguments: ', event, args);
       $lwc.dispatchEvent(new CustomEvent("sendaccount", {
         detail: { accountId: `testAcc${Number(new Date())}` },

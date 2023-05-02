@@ -13,7 +13,6 @@ export default {
     const name = ref('Vue!');
 
     function triggerEvent(event, ...args) {
-        console.log(this)
       console.log('Example of template arguments: ', event, args);
       $lwc.dispatchEvent(new CustomEvent("sendaccount", {
         detail: { accountId: `testAcc${Number(new Date())}` },

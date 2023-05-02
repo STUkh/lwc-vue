@@ -4,9 +4,9 @@
       <p>Counter: {{ counter.count }}</p>
       <button @click="counter.increment">Increment</button>
     </div>
-  </template>
+</template>
   
-  <script>
+<script>
   import { useCounterStore } from './store.js';
   
   export default {
@@ -16,3 +16,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .test1 {
+    color: red;
+  }
+</style>

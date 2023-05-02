@@ -40,13 +40,6 @@ export function render(_ctx, _cache) {
           _createTextVNode("Go to Contact")
         ]),
         _: 1 /* STABLE */
-      }),
-      _createTextVNode(" | "),
-      _createVNode(_component_router_link, { to: "/test" }, {
-        default: _withCtx(() => [
-          _createTextVNode("Go to Test")
-        ]),
-        _: 1 /* STABLE */
       })
     ]),
     _createVNode(_component_router_view)
