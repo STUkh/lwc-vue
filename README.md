@@ -38,6 +38,13 @@ Open the terminal in VSCode (View -> Terminal) and run the following command to 
 ```
 sfdx force:auth:web:login -d -a DevHub
 ```
+
+If you have an issues with your org - make an alias for DevHub to your account
+
+```
+sfdx force:alias:set DevHub=stukak@gmail.com
+```
+
 This command opens the Salesforce login page in your default web browser. Log in with your Dev Hub org credentials. After successful authentication, you can close the browser tab and return to VSCode.
 
 #### 5. Create a scratch org:

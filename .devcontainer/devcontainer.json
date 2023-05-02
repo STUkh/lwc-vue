@@ -2,6 +2,12 @@
     "name": "Salesforce Project (Community)",
     "dockerFile": "Dockerfile",
 
+    "forwardPorts": [
+      9000, // webpack
+      3000, // rollup
+      3333 // lightning web server
+    ],
+
     // Configure tool-specific properties.
     "customizations": {
       // Configure properties specific to VS Code.
