@@ -5,8 +5,28 @@
     "forwardPorts": [
       9000, // webpack
       3000, // rollup
-      3333 // lightning web server
+      3333, // lightning web server
+      9229, // nodejs remote debug port
+      9223 // chrome remote debug port
     ],
+
+    // "dockerComposeFile": "docker-compose.yml",
+    // "service": "sfdx-dev",
+    "workspaceFolder": "/volume/lwc-dev/lwc-vue",
+    "workspaceMount": "",
+    "mounts": [{
+      "source": "lwc-dev", 
+      "target": "/volume/lwc-dev", 
+      "type": "volume"
+    }, {
+      "source": "vscode-extensions", 
+      "target": "/root/.vscode-server/extensions", 
+      "type": "volume"
+    }, {
+      "source": "sfdx-extensions", 
+      "target": "/root/.local/share/sfdx", 
+      "type": "volume"
+    }],
 
     // Configure tool-specific properties.
     "customizations": {

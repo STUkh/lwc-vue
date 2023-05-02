@@ -5,20 +5,52 @@
             "path": "force-app/main/default/lwc/app/app.js"
         },
         {
-            "name": "c/vueLib",
-            "path": "force-app/main/default/lwc/vueLib/vueLib.js"
+            "name": "c/pinia",
+            "path": "force-app/main/default/lwc/pinia/pinia.js"
+        },
+        {
+            "name": "c/veeValidate",
+            "path": "force-app/main/default/lwc/veeValidate/veeValidate.js"
         },
         {
             "name": "c/vue",
             "path": "force-app/main/default/lwc/vue/vue.js"
         },
         {
+            "name": "c/vueAboutPage",
+            "path": "force-app/main/default/lwc/vueAboutPage/vueAboutPage.js"
+        },
+        {
             "name": "c/vueApp",
             "path": "force-app/main/default/lwc/vueApp/vueApp.js"
         },
         {
+            "name": "c/vueContactPage",
+            "path": "force-app/main/default/lwc/vueContactPage/vueContactPage.js"
+        },
+        {
+            "name": "c/vueHelpers",
+            "path": "force-app/main/default/lwc/vueHelpers/vueHelpers.js"
+        },
+        {
+            "name": "c/vueHomePage",
+            "path": "force-app/main/default/lwc/vueHomePage/vueHomePage.js"
+        },
+        {
+            "name": "c/vueLib",
+            "path": "force-app/main/default/lwc/vueLib/vueLib.js"
+        },
+        {
+            "name": "c/vueRouter",
+            "path": "force-app/main/default/lwc/vueRouter/vueRouter.js"
+        },
+        {
             "name": "c/vueStore",
             "path": "force-app/main/default/lwc/vueStore/vueStore.js"
+        },
+        {
+            "name": "c/yupLib",
+            "path": "force-app/main/default/lwc/yupLib/yupLib.js"
         },
         { "dir": "force-app/main/default/lwc" },
         { "npm": "lightning-base-components" }

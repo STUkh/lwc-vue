@@ -21,7 +21,7 @@ export default {
       const onSubmit = (values) => { console.log(values); };
       const onInvalidSubmit = ({ values, errors, results }) => { console.log(values, errors, results); }
 
-      const initialValues = { password: 123};
+      const initialValues = { password: 123 };
 
       return { schema, onSubmit, onInvalidSubmit, initialValues };
     }

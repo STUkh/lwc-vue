@@ -3,7 +3,6 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const LwcWebpackPlugin = require('lwc-webpack-plugin');
 
 module.exports = {
@@ -70,18 +69,11 @@ module.exports = {
             filename: './index.html',
             minify: false,
         }),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'disabled',
-            generateStatsFile: true,
-            statsOptions: {
-                source: false
-            }
-        }),
         new LwcWebpackPlugin(),
     ],
     devServer: {
         liveReload: true,
-        compress: true,
+        compress: false,
         port: 9000,
         open: false
     }

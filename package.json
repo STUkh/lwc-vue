@@ -47,7 +47,6 @@
         "vue": "^3.2.47",
         "vue-loader": "^17.0.1",
         "webpack": "^5.77.0",
-        "webpack-bundle-analyzer": "^4.8.0",
         "webpack-cli": "^5.0.1",
         "webpack-dev-server": "^4.13.2",
         "yargs": "^17.7.2"
@@ -87,8 +86,8 @@
         "test:unit:coverage": "sfdx-lwc-jest --coverage",
         "test:unit:debug": "sfdx-lwc-jest --debug",
         "test:unit:watch": "sfdx-lwc-jest --watch",
-        "templates": "node ./config/vue-sfx-transformer.js --src='./force-app/main/default/lwc' --vue-import-path='c/vueLib'",
-        "templates:watch": "node ./config/vue-sfx-transformer.js --src='./force-app/main/default/lwc' --vue-import-path='c/vueLib' --watch --verbose",
+        "templates": "node ./config/vue-sfc-transformer.js --src='./force-app/main/default/lwc' --vue-import-path='c/vueLib'",
+        "templates:watch": "node ./config/vue-sfc-transformer.js --src='./force-app/main/default/lwc' --vue-import-path='c/vueLib' --watch --verbose",
         "watch": "webpack serve --mode development"
     }
 }
