@@ -1,43 +1,71 @@
+/* eslint-disable no-await-in-loop */
 const fs = require('fs');
 const path = require('path');
-const sass = require('node-sass');
+const sass = require('sass');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const chokidar = require('chokidar');
-const { parse, compileTemplate } = require('@vue/compiler-sfc');
+const { parse, compileTemplate, compileStyleAsync } = require('@vue/compiler-sfc');
 
+// Custom SCSS preprocessing function
+const preprocessScss = (source) => {
+  const result = sass.compileString(source);
+  return result.css.toString();
+};
 
-function processVueFile(filePath, options) {
+async function processVueFile(filePath, options) {
   const fileName = path.basename(filePath, '.vue');
   const fileDir = path.dirname(filePath);
   const fileContent = fs.readFileSync(filePath, 'utf8');
+
   const { descriptor } = parse(fileContent);
 
   let script = descriptor.script ? descriptor.script.content : 'export default {};\n';
   let renderTemplate = '';
   let style = '';
+  const isScoped = descriptor.styles?.some(s => s.scoped);
+  const fileId = `data-v-${fileName.toLowerCase()}`;
 
   script = script.replace('export default {', `import { render } from './${fileName}-template.js';\n\nexport default {\n  render,\n`);
 
   if (descriptor.template) {
     const { code } = compileTemplate({
         source: descriptor.template.content,
-        id: fileName,
+        id: fileId,
         fileName,
-        compilerOptions: { mode: 'module' }
+        scoped: isScoped,
+        isProd: false,
+        compilerOptions: {
+          mode: 'module',
+        }
     });
     renderTemplate = code;
   }
 
   if (descriptor.styles.length > 0) {
     style = descriptor.styles
-      .map((s) => {
+      .map(async (s) => {
+        s.parsedContent = s.content;
+        const styleCompilerOptions = {
+          source: s.parsedContent,
+          id: fileId,
+          scoped: s.scoped,
+          preprocessLang: s.lang,
+          modules: s.module,
+        };
+
         if (s.lang === 'scss' || s.lang === 'sass') {
-          return sass.renderSync({ data: s.content, indentedSyntax: s.lang === 'sass' }).css.toString();
+          styleCompilerOptions.preprocessOptions = {
+            customPreprocessor: preprocessScss,
+          };
         }
-        return s.content;
-      })
-      .join('\n');
+
+        const compiledStyle = await compileStyleAsync(styleCompilerOptions);
+        return compiledStyle.code;
+      });
+
+      style = await Promise.all(style)
+      style = style.join('\n');
   }
 
   if (options.vueImportPath) {
@@ -54,7 +82,13 @@ function processVueFile(filePath, options) {
   if (style.length) {
     fs.writeFileSync(path.join(fileDir, `${fileName}.css`), style, 'utf8');
   } else {
-    fs.unlinkSync(path.join(fileDir, `${fileName}.css`));
+    try {
+      fs.unlinkSync(path.join(fileDir, `${fileName}.css`));
+    } catch (err) {
+      // if (options.verbose) {
+      //   console.log(`Could not unlink file: ${fileName}.css`);
+      // }
+    }
   }
 
   if (options.verbose) {
@@ -62,19 +96,19 @@ function processVueFile(filePath, options) {
   }
 }
 
-function transformVueFiles(dir, options) {
+async function transformVueFiles(dir, options) {
   const files = fs.readdirSync(dir);
 
-  files.forEach(file => {
+  for (let file of files) {
     const filePath = path.join(dir, file);
     const fileStat = fs.statSync(filePath);
 
     if (fileStat.isDirectory()) {
-      transformVueFiles(filePath, options);
+      await transformVueFiles(filePath, options);
     } else if (path.extname(filePath) === '.vue') {
-      processVueFile(filePath, options);
+      await processVueFile(filePath, options);
     }
-  });
+  }
 }
 
 function watchVueFiles(dir, options) {

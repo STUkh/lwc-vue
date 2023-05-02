@@ -16,6 +16,10 @@
             "name": "c/vueApp",
             "path": "force-app/main/default/lwc/vueApp/vueApp.js"
         },
+        {
+            "name": "c/vueStore",
+            "path": "force-app/main/default/lwc/vueStore/vueStore.js"
+        },
         { "dir": "force-app/main/default/lwc" },
         { "npm": "lightning-base-components" }
     ]

@@ -1,0 +1,8 @@
+.contact-form[data-v-vuecontactpage] {
+  border: 1px solid #dddbda;
+  border-radius: 4px;
+  padding: 10px;
+}
+.contact-form__submit-holder[data-v-vuecontactpage] {
+  padding: 20px 0 0;
+}
