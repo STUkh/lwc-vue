@@ -1,0 +1,54 @@
+{
+    "name": "Salesforce Project (Community)",
+    "dockerFile": "Dockerfile",
+
+    "forwardPorts": [
+      9000, // webpack
+      3000, // rollup
+      3333, // lightning web server
+      9229, // nodejs remote debug port
+      9223, // chrome remote debug port
+      46211,
+      9856
+    ],
+
+    // "dockerComposeFile": "docker-compose.yml",
+    // "service": "sfdx-dev",
+    "workspaceFolder": "/volume/lwc-dev/lwc-vue/",
+    "workspaceMount": "",
+    "mounts": [{
+      "source": "lwc-dev", 
+      "target": "/volume/lwc-dev", 
+      "type": "volume"
+    }, {
+      "source": "lwc-root", 
+      "target": "/root", 
+      "type": "volume"
+    }],
+
+    // Configure tool-specific properties.
+    "customizations": {
+      // Configure properties specific to VS Code.
+      "vscode": {
+        // Set *default* container specific settings.json values on container create.
+        "settings": { 
+          "salesforcedx-vscode-apex.java.home": "/usr/lib/jvm/java-1.11.0-openjdk-arm64"
+        },
+        
+        // Add the IDs of extensions you want installed when the container is created.
+        "extensions": [
+          "salesforce.salesforcedx-vscode",
+          "redhat.vscode-xml",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          "Vue.volar"
+        ]
+      }
+	},
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/salesforce-sfdx:1": {
+			"version": "latest"
+		}
+	}
+  }
+  
