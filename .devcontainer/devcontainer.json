@@ -19,12 +19,8 @@
       "target": "/volume/lwc-dev", 
       "type": "volume"
     }, {
-      "source": "vscode-extensions", 
-      "target": "/root/.vscode-server/extensions", 
-      "type": "volume"
-    }, {
-      "source": "sfdx-extensions", 
-      "target": "/root/.local/share/sfdx", 
+      "source": "lwc-root", 
+      "target": "/root", 
       "type": "volume"
     }],
 
@@ -34,7 +30,7 @@
       "vscode": {
         // Set *default* container specific settings.json values on container create.
         "settings": { 
-          "salesforcedx-vscode-apex.java.home": "/usr/lib/jvm/java-11-openjdk-amd64"
+          "salesforcedx-vscode-apex.java.home": "/usr/lib/jvm/java-1.11.0-openjdk-arm64"
         },
         
         // Add the IDs of extensions you want installed when the container is created.
@@ -42,7 +38,8 @@
           "salesforce.salesforcedx-vscode",
           "redhat.vscode-xml",
           "dbaeumer.vscode-eslint",
-          "esbenp.prettier-vscode"
+          "esbenp.prettier-vscode",
+          "Vue.volar"
         ]
       }
 	},
