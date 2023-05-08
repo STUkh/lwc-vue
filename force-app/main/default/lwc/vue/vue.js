@@ -6,11 +6,11 @@ export default class VueAppComponent extends LightningElement {
 
     renderedCallback() {
         const el = this.template.querySelector('.vue-application');
-        vueApp.provide('$lwc', this);
+        vueApp.provide('$vueEl', el);
         vueApp.mount(el);
     }
 
     disconnectedCallback() {
-        // vueApp.destroy(); // TODO: clarify how to properly destroy
+        vueApp.unmount();
     }
 }

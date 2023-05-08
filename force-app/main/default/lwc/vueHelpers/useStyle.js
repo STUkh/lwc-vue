@@ -18,7 +18,7 @@ export const useStyles = function useStyles(styles, parentNode) {
   }
 
   onMounted(() => {
-    const $lwc = inject('$lwc');
+    const $lwc = inject('$vueEl');
 
     styleElement = document.createElement('style');
     styleElement.textContent = cssString;

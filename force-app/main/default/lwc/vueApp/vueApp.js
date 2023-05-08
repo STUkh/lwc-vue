@@ -7,7 +7,7 @@ export default {
   render,
 
   setup() {
-    const $lwc = inject('$lwc');
+    const $lwc = inject('$vueEl');
     const items = reactive([{id: 'id-1', 'title': 'first'}, {id: 'id-2', 'title': 'second'}]);
     const title = ref($lwc.title);
     const name = ref('Vue!');
