@@ -6,9 +6,9 @@ const _hoisted_1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementV
 export function render(_ctx, _cache) {
   return (_openBlock(), _createElementBlock("div", null, [
     _hoisted_1,
-    _createElementVNode("p", null, "Counter: " + _toDisplayString(_ctx.counter.count), 1 /* TEXT */),
+    _createElementVNode("p", null, "Date Num: " + _toDisplayString(_ctx.aboutStore.date), 1 /* TEXT */),
     _createElementVNode("button", {
-      onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.counter.increment && _ctx.counter.increment(...args)))
-    }, "Increment")
+      onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.aboutStore.getDate && _ctx.aboutStore.getDate(...args)))
+    }, "Get Date Number")
   ]))
 }

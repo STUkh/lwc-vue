@@ -1,6 +1,12 @@
 import { LightningElement } from "lwc";
+import { useConterStore } from 'c/store';
+import { withPinia } from 'c/lwcMixins';
 
-export default class ContainerVue extends LightningElement {
+const counterStore = useConterStore();
+
+export default class ContainerVue extends withPinia({ counterStore }, LightningElement) {
+    counterStore = counterStore.$state;
+
     // Class property to hold the instance of the framework
     vueAppTitle;
 
@@ -29,5 +35,18 @@ export default class ContainerVue extends LightningElement {
     handleSendAccount(event) {
         event.stopPropagation();
         this.eventValue = event.detail.accountId;
+    }
+
+    // Pinia related methods
+    connectedCallback() {
+        super.connectedCallback();
+    }
+
+    handleIncrement() {
+        counterStore.increment();
+    }
+
+    handleDecrement() {
+        counterStore.decrement();
     }
 }

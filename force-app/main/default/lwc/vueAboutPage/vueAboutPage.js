@@ -1,5 +1,5 @@
 
-  import { useCounterStore } from './store.js';
+  import { useDateStore } from 'c/store';
   
   import { render } from './vueAboutPage-template.js';
 
@@ -7,7 +7,7 @@ export default {
   render,
 
     setup() {
-      const counter = useCounterStore();
-      return { counter }
+      const aboutStore = useDateStore();
+      return { aboutStore }
     }
   }

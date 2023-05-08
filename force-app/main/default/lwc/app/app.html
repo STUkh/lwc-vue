@@ -1,6 +1,20 @@
 <template>
     <lightning-card title="Vue Component" icon-name="standard:account">
         <div class="slds-p-around_medium">
+            <div class="slds-box slds-theme_default">
+                <div class="slds-text-title">Counter</div>
+                <div class="slds-m-vertical_medium">
+                  <span class="slds-text-heading_large">{counterStore.count}</span>
+                </div>
+                <div>
+                  <button class="slds-button slds-button_brand" onclick={handleIncrement}>
+                    Increment
+                  </button>
+                  <button class="slds-button slds-button_destructive" onclick={handleDecrement}>
+                    Decrement
+                  </button>
+                </div>
+              </div>
             <lightning-input
                 label="Outer property"
                 onkeyup={handleKeyUp}

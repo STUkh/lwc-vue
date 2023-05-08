@@ -5,6 +5,10 @@
             "path": "force-app/main/default/lwc/app/app.js"
         },
         {
+            "name": "c/lwcMixins",
+            "path": "force-app/main/default/lwc/lwcMixins/lwcMixins.js"
+        },
+        {
             "name": "c/pinia",
             "path": "force-app/main/default/lwc/pinia/pinia.js"
         },
@@ -45,8 +49,8 @@
             "path": "force-app/main/default/lwc/vueRouter/vueRouter.js"
         },
         {
-            "name": "c/vueStore",
-            "path": "force-app/main/default/lwc/vueStore/vueStore.js"
+            "name": "c/store",
+            "path": "force-app/main/default/lwc/store/store.js"
         },
         {
             "name": "c/yupLib",
