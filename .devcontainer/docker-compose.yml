@@ -9,10 +9,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - lwc-dev:/volume/lwc-dev
-      - vscode-extensions:/root/.vscode-server/extensions
-      - sfdx-extensions:/root/.local/share/sfdx
+      - lwc-root:/root
 
 volumes:
   lwc-dev:
-  vscode-extensions:
-  sfdx-extensions:
+  lwc-root:

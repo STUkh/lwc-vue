@@ -7,12 +7,14 @@
       3000, // rollup
       3333, // lightning web server
       9229, // nodejs remote debug port
-      9223 // chrome remote debug port
+      9223, // chrome remote debug port
+      46211,
+      9856
     ],
 
     // "dockerComposeFile": "docker-compose.yml",
     // "service": "sfdx-dev",
-    "workspaceFolder": "/volume/lwc-dev/lwc-vue",
+    "workspaceFolder": "/volume/lwc-dev/lwc-vue/",
     "workspaceMount": "",
     "mounts": [{
       "source": "lwc-dev", 
